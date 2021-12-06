@@ -13,7 +13,6 @@ function App() {
       <InputMovie />
       <MoviesRank />
       <UsersRanking />
-     
     </>
   );
 }
