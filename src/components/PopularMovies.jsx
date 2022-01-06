@@ -36,6 +36,7 @@ const PopularMovies = () => {
         
         <div className="popular--movies--container">
             <div>
+                Popular Movies
                 <div className="popular__movies" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${firstMovie.backdrop_path}`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
                 </div>
                 <span>

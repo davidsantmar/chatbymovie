@@ -1,12 +1,12 @@
-import inputActionTypes from "../actions/inputActionTypes";
+import movieDataActionTypes from "../actions/movieDataActionTypes";
 
-function movieDataReducer(movie = [], action) {
+function movieDataReducer(movies = [], action) {
   switch (action.type) {
-    case inputActionTypes.LOAD_MOVIE_DATA:
-      return action.movie;
+    case movieDataActionTypes.LOAD_MOVIES_BY_NAME:
+      return action.movies;
 
     default:
-      return movie;
+      return movies;
   }
 }
 

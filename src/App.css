@@ -72,10 +72,14 @@ h2{
   background-color: lightgray;
   border-radius: 5px;
 }
+.poster__movie__result{
+  width: 40px;
+  height: 40px;
+  border: solid 1px black;
+}
 .chat--container{
   border: solid red 2px;
 }
 .messages--container{
   border: solid blueviolet 2px;
-
 }

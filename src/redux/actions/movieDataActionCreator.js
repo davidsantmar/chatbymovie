@@ -1,7 +1,7 @@
-import inputActionTypes from "./inputActionTypes";
+import movieDataActionTypes from "./movieDataActionTypes";
 import axios from 'axios';
 
-export function loadChannel(movieName){
+export function GetMoviesByName(movieName){
     const API_BASE = `https://api.themoviedb.org/3/search/movie?api_key=4edc87782c375367d2a7b9637f00bfd3&query=${movieName}`;
 
     return async (dispatch) => {
@@ -9,8 +9,8 @@ export function loadChannel(movieName){
           const { data } = await axios(`${API_BASE}`);
     
           dispatch({
-            type: inputActionTypes.LOAD_MOVIE_DATA,
-            movie: data,
+            type: movieDataActionTypes.LOAD_MOVIES_BY_NAME,
+            movies: data,
           });
         } catch (error) {
           console.log(error.message);
