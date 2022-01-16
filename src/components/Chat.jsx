@@ -1,74 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
-import Channel from './Channel';
-import { signInWithPopup } from 'firebase/auth';
+import { useSelector } from "react-redux";
+import AddMessage from "./AddMessage";
+import MessageDetail from "./MessageDetail";
+import firebase from "firebase";
+import 'firebase/firestore';
 
-firebase.initializeApp({
-        apiKey: "AIzaSyACGeRmkHooWiPrv_tAcDCD9RfUOozSylc",
-        authDomain: "chatbymovie.firebaseapp.com",
-        projectId: "chatbymovie",
-        storageBucket: "chatbymovie.appspot.com",
-        messagingSenderId: "819100949229",
-        appId: "1:819100949229:web:f8768a989c78102cd84ae4",
-        measurementId: "G-XF1KZHQJ95"
-});
+function Chat() {
+  const messages = useSelector((state) => state.messages);
+  const movieSelected = useSelector((state) => state.movieSelected);
+  const db = firebase.firestore();
 
-const auth = firebase.auth();
-const db = firebase.firestore();
+  function scrollToBottom (id) {
+    var div = document.getElementById(id);
+    div.scrollTop = div.scrollHeight - div.clientHeight ;
+  }
+  return (
+  <>
+      {movieSelected && movieSelected.length > 0 ? (
+        movieSelected.map((movie) => (
+          <>
+          <div className="chat--title--container" key={movie.id}>
+            <span className="chat__title">{movie.title} movie chat</span>
+            <button className="like__button" type="button">&#128077;</button>  
+            <button className="dislike__button" type="button">&#128078;</button>  
+          </div>
+          {console.log(movie.poster_path)}
+          <div className="message--box--container">
+            <div className="messages__box" id="messages--box">
+              {messages?.map((message) => (
+                <>
+                <MessageDetail key={message.id} message={message} />
+                {scrollToBottom("messages--box")}
+                </>
+              ))
+              }
+            </div>
+          </div>
+          <AddMessage />
+          </>
+          ))
+      ) : (
+        <h4>No movie selected</h4>         
+    )}
 
-const Chat = () => {
-    const [user, setUser] = useState(() => auth.currentUser);
-    const [initializing, setInitializing] = useState(true);
-    useEffect(() =>{
-        const unsubscribe = auth.onAuthStateChanged(user =>{
-            if (user){
-                setUser(user);
-            }else{
-                setUser(null);
-            }
-            if (initializing){
-                setInitializing(false);
-            }
-        })
-        return unsubscribe;
-    }, [])
-
-    const signInWithGoogle = async () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        auth.useDeviceLanguage();
-        try{
-            await signInWithPopup(provider);
-        }
-        catch(error){
-            console.error(error);
-        }
-    }
-    const signOut = async () => {
-        try{
-            await firebase.auth().signOut();
-        }
-        catch(error){
-            console.log(error.message);
-        }
-    }
-
-    if (initializing) return "loading...";
-
-    return (
-        <div className="chat--container">
-            {user ? (
-            <> 
-                <button onClick={signOut}>Sign Out</button>
-                <Channel user={user} db={db} />
-            </>
-            ):(
-                <button onClick={signInWithGoogle}></button>
-            )}
-        </div>
-        
-    );
-};
+    </>
+  );
+}
 
 export default Chat;

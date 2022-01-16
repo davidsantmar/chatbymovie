@@ -8,9 +8,6 @@ h2{
   justify-content: center;
   flex-direction: column;
 }
-.instructions__and__rules{
-
-}
 .input--movie--container{
   display: flex;
   justify-content: space-evenly;
@@ -55,7 +52,7 @@ h2{
   height: 10rem;
   padding: 2rem;
 }
-.modal-background {
+.modal--background {
   position: absolute;
   right: 0;
   top: 0;
@@ -63,23 +60,64 @@ h2{
   bottom: 0;
   background-color: rgba(10, 10, 10, 0.86);
 }
-.modal-card {
+.modal--card {
   margin: 0 auto;
   display: block;
-  margin-top: 250px;
+  margin-top: 18rem;
   width: 20rem;
   height: 25rem;
   background-color: lightgray;
   border-radius: 5px;
 }
-.poster__movie__result{
-  width: 40px;
-  height: 40px;
+.poster__movie__modal{
+  width: 4rem;
+  height: 4rem;
   border: solid 1px black;
 }
-.chat--container{
-  border: solid red 2px;
+.chat--title--container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
-.messages--container{
-  border: solid blueviolet 2px;
+.chat__title{
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.like__button{
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+.dislike__button{
+  font-size: 1.5rem;
+}
+.messages--box--container{
+  display: flex;
+}
+.messages__box{
+  display: flex;
+  height: 38rem;
+  width: 40rem;
+  border: solid 1px black;
+  overflow:scroll;
+  border-radius: 10px;
+}
+.message--container{
+  margin-right: 1rem;
+}
+.input--message--container{
+  display: flex;
+  justify-content: center;
+}
+.send__message__field{
+  width: 30rem;
+  font-size: 1rem;
+}
+.send__message__button{
+  font-size: 3rem;
+}
+footer{
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
