@@ -1,13 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const ChannelButton = () => {
+const ChannelReady = () => {
     const movieSelected = useSelector((state) => state.movieSelected);
 
     return (
-        <div style={{color: movieSelected.length > 0 ? "green" : "red"}}>Enter to the chat room
-        </div>
+        <>
+            <div className="channel--ready--container">
+                <div className="channel__ready" style={{color: movieSelected?.id ? "green" : "red"}}>
+                    Access to the chat room
+                </div>
+            </div>
+            <br />
+        </>
     );
 };
 
-export default ChannelButton;
+export default ChannelReady;

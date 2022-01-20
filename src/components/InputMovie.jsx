@@ -16,7 +16,6 @@ const InputMovie = () => {
             handleClick();        
         }
     }
-
     function handleChannel(event) {
         setMovieTitle(event.target.value);
     }
@@ -31,8 +30,8 @@ const InputMovie = () => {
         <>
             <div className="input--movie--container">
                 <input type="text" className="input__field" onChange={handleChannel} value={movieTitle} 
-                placeholder="Type the movie title" onKeyPress={handleEnterPressed} />
-                <button type="button" className="search__button" onClick={handleClick}>
+                placeholder="Type the movie title" onKeyPress={handleEnterPressed} autoFocus />
+                <button className="search__button" type="button" onClick={handleClick}>
                     Search!!
                 </button>
             </div>
@@ -44,13 +43,14 @@ const InputMovie = () => {
                             {movieFound?.length > 0 &&
                                 movieFound.map((movie) => (
                                     <>
-                                        <div key={movie.id}>{movie.title}
-                                            <div className="poster__movie__modal" 
-                                            style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${movie.backdrop_path}`, 
-                                            backgroundRepeat: "no-repeat", 
-                                            backgroundSize: "cover"}}>
+                                        <div className="modal__result">
+                                            <div key={movie.id} className="popular__movie__title">
+                                                {movie.title}
                                             </div>
-                                            <button onClick={() => handleMovieSelected(movie)} type="button">
+                                            <div className="poster__movie__modal" 
+                                            style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${movie.backdrop_path}`}}>
+                                            </div>
+                                            <button className="modal__button" onClick={() => handleMovieSelected(movie)} type="button">
                                                 Select the {movie.title} channel!
                                             </button>
                                         </div>
@@ -61,6 +61,7 @@ const InputMovie = () => {
                     </div>
                 </div>
             </div>
+            <br />
         </>
     );
 };

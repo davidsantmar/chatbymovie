@@ -1,12 +1,12 @@
 import movieSelectedActionTypes from "../actions/movieSelectedActionTypes";
 
-function movieSelectedReducer(movies = [], action) {
+function movieSelectedReducer(movie = {}, action) {
   switch (action.type) {
     case movieSelectedActionTypes.SELECT_MOVIE:
-      return [...movies, { title: action.movie.title, id: action.movie.id }];
+      return { title: action.movie.title, id: action.movie.id };
 
     default:
-      return movies;
+      return movie;
   }
 }
 

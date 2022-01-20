@@ -28,51 +28,58 @@ const PopularMovies = () => {
         GetPopularMovies()
             .then(tempJson => setFifthMovie(tempJson[4]));
     }, []); 
-
-    //if (!firstMovie) return "loading...";
-
-
     return (
-        
-        <div className="popular--movies--container">
-            <div>
-                Popular Movies
-                <div className="popular__movies" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${firstMovie.backdrop_path}`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
-                </div>
-                <span>
-                    {firstMovie.original_title}
-                </span>
+    <>
+        <div className="popular--movies--section">
+            <div className="popular__movies__title">
+                    <h3>Popular Movies</h3>
             </div>
-            <div>
-                <div className="popular__movies" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${secondMovie.backdrop_path}`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+
+            <div className="popular--movies--container">
+                <div className="popular__movie__card">
+                    <div className="popular__movie__image" 
+                    style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${firstMovie.backdrop_path}`}}>
+                    </div>
+                    <div className="popular__movie__title">
+                            {firstMovie.original_title}
+                    </div>
                 </div>
-                <span>
-                    {secondMovie.original_title}
-                </span>
-            </div>
-            <div>
-                <div className="popular__movies" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${thirdMovie.backdrop_path}`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+                <div className="popular__movie__card">
+                    <div className="popular__movie__image" 
+                    style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${secondMovie.backdrop_path}`}}>
+                    </div>
+                    <div className="popular__movie__title">
+                            {secondMovie.original_title}
+                    </div>
                 </div>
-                <span>
-                    {thirdMovie.original_title}
-                </span>
-            </div>
-            <div>
-                <div className="popular__movies" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${fourthMovie.backdrop_path}`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+                <div className="popular__movie__card">
+                    <div className="popular__movie__image" 
+                    style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${thirdMovie.backdrop_path}`}}>
+                    </div>
+                    <div className="popular__movie__title">
+                            {thirdMovie.original_title}
+                    </div>
                 </div>
-                <span>
-                    {fourthMovie.original_title}
-                </span>
-            </div>
-            <div>
-                <div className="popular__movies" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${fifthMovie.backdrop_path}`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+                <div className="popular__movie__card">
+                    <div className="popular__movie__image" 
+                    style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${fourthMovie.backdrop_path}`}}>
+                    </div>
+                    <div className="popular__movie__title">
+                            {fourthMovie.original_title}
+                    </div>
                 </div>
-                <span>
-                    {fifthMovie.original_title}
-                </span>
+                <div className="popular__movie__card">
+                    <div className="popular__movie__image" 
+                    style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w200${fifthMovie.backdrop_path}`}}>
+                    </div>
+                    <div className="popular__movie__title">
+                            {fifthMovie.original_title}
+                    </div>
+                </div>
             </div>
         </div>
-        
+        <br />
+    </>
     );
 };
 

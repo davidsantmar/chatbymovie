@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addMessage } from "../redux/actions/messageActionCreator";
+import {  useSelector } from "react-redux";
+import { addMessage } from "../firebase/dbactions";
+//import { addMessage } from "../redux/actions/messageActionCreator";
 
 function AddMessage() {
-  const dispatch = useDispatch();
   const [message, setMessage] = useState("");
+  const movieSelected = useSelector((state) => state.movieSelected);
+
   const handleEnterPressed = (event) => {
       if(event.key === 'Enter'){
           handleClick();        
@@ -16,10 +18,13 @@ function AddMessage() {
   }
 
   function handleClick() {
-    dispatch(addMessage(message));
+    addMessage(movieSelected.id, {
+      text: message,
+      user: "davidsanmar@yahoo.es", // TODO TRAER USER DEL STORE O DE FIREBASE
+      createdAt: Date.now()
+    });
     setMessage("");
   }
-  
   return (
     <>
       <div className="input--message--container">
@@ -29,7 +34,8 @@ function AddMessage() {
           onChange={handleChange}
           onKeyPress={handleEnterPressed}
           value={message}
-          placeholder="Type your message"            
+          placeholder="Type your message"
+          autoFocus            
         />
         <button
           className="send__message__button"

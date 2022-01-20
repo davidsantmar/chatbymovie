@@ -1,24 +1,19 @@
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { deleteMessage } from "../redux/actions/messageActionCreator";
 
 function MessageDetail({ message }) {
-  const dispatch = useDispatch();
-
-  function handleDelete() {
-    dispatch(deleteMessage(message));
-  }
+  const messageDate = new Date(message.createdAt).toDateString();
   return (
-    <p className="message--container">
-      {message.description}
-      <button
-        type="button"
-        aria-label="Close"
-        onClick={handleDelete}
-      >
+    <>
+    <div className="message--container">
+      <div className="message__view">
+      {message.text} 
+      </div>
         &#10060;      
-      </button>
-    </p>
+    </div>
+    <sub>
+    (by {message.user} at {messageDate})
+    </sub>
+  </>
   );
 }
 

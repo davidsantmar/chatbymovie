@@ -1,12 +1,13 @@
 import React from 'react';
 
 const Header = () => {
-
     return (
         <>
-        <h2>
-            Welcome to ChatByMovie!!
-        </h2>
+        <div className='header--container'>
+            <h2>
+                Welcome to ChatByMovie!!<sup className="sup__header"> BETA </sup>
+            </h2>
+        </div>
       </>
     );
 };
