@@ -45,6 +45,7 @@ const InputMovie = () => {
                                     <>
                                         <div className="modal__result">
                                             <div key={movie.id} className="popular__movie__title">
+                                                
                                                 {movie.title}
                                             </div>
                                             <div className="poster__movie__modal" 
